@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taqueria La Leyenda — Food Truck Mexicano en Tampa, FL</title>
+<meta name="description" content="Taqueria La Leyenda, food truck mexicano tradicional en Tampa, FL. Tacos desde $2.50, al pastor, asada, carnitas y más. Todos los días de 6 PM a 12 AM en 4441 Gunn Hwy. 4.9★ en Google.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#2aa84c; --verde-osc:#177033; --verde-vivo:#3bbd55;
+  --dorado:#d9a514; --dorado-claro:#f2c230; --mostaza:#b97f06;
+  --rojo:#d92b26; --rojo-osc:#b01e1a;
+  --crema:#fff8ec; --papel:#fffdf6; --tinta:#2b2b23; --gris:#6f6a5c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',Arial,sans-serif;background:var(--crema);color:var(--tinta);max-width:640px;margin:0 auto;font-size:16px;line-height:1.5;
+  background-image:radial-gradient(rgba(217,165,20,.10) 1.5px, transparent 1.6px);background-size:22px 22px}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+h1,h2,h3,.cond{font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:.5px}
+
+/* ---------- barra superior ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(90deg,var(--verde-osc),var(--verde) 55%,var(--verde-osc));display:flex;align-items:center;gap:10px;padding:8px 14px;box-shadow:0 2px 10px rgba(23,112,51,.4)}
+.topbar img{width:44px;height:44px;object-fit:cover;border-radius:9px;border:2px solid var(--dorado-claro)}
+.topbar .nom{font-family:'Barlow Condensed';font-weight:700;font-size:19px;line-height:1;color:#fff;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.topbar .nom span{color:var(--dorado-claro)}
+.topbar .sub{font-size:10.5px;color:#dff5e3;letter-spacing:1.6px;font-weight:600}
+.topbar .sp{flex:1}
+.lang{display:flex;border:1.5px solid #fff;border-radius:20px;overflow:hidden;flex-shrink:0}
+.lang button{background:transparent;color:#fff;border:0;font-weight:700;font-size:12.5px;padding:5px 9px;cursor:pointer;font-family:'Barlow'}
+.lang button.on{background:#fff;color:var(--verde-osc)}
+.btn-call{background:var(--rojo);color:#fff;border-radius:22px;padding:8px 12px;font-weight:700;font-size:13.5px;white-space:nowrap;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+
+/* ---------- papel picado ---------- */
+.papel{display:block;width:100%;height:30px}
+
+/* ---------- hero ---------- */
+.hero{position:relative}
+.hero>img{width:100%;height:400px;object-fit:cover;object-position:center 62%}
+.hero .velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,40,16,0) 40%,rgba(20,40,16,.45) 72%,rgba(255,248,236,.98) 100%)}
+.hero .cont{position:relative;margin-top:-86px;padding:0 18px}
+.trucktag{display:inline-block;background:var(--rojo);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:1.6px;border-radius:6px;padding:5px 12px;text-transform:uppercase;box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.hero h1{font-size:46px;line-height:.99;color:var(--verde-osc);margin:10px 0 6px;font-weight:700;text-shadow:0 1px 0 #fff}
+.hero h1 .r{color:var(--rojo)} .hero h1 .d{color:var(--mostaza)}
+.hero p{font-size:16.5px;color:#43402f;max-width:94%;font-weight:500}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.bdg{display:inline-flex;align-items:center;gap:6px;border-radius:20px;padding:6px 13px;font-size:13.5px;font-weight:700}
+.bdg.star{background:#fff;border:2px solid var(--dorado);color:var(--tinta)}
+.bdg.star b{color:var(--mostaza);font-size:15px}
+.bdg.price{background:var(--verde);color:#fff}
+.ctas{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
+.cta{flex:1;min-width:100px;text-align:center;border-radius:26px;padding:12px 8px;font-weight:700;font-size:15.5px;color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.18)}
+.cta.tel{background:var(--rojo)} .cta.wa{background:#1faa55} .cta.map{background:#fff;border:2px solid var(--verde);color:var(--verde-osc)}
+
+/* ---------- franja de datos ---------- */
+.datos{display:flex;background:linear-gradient(90deg,var(--verde-osc),var(--verde));margin-top:22px}
+.datos div{flex:1;text-align:center;padding:12px 4px;border-right:1px solid rgba(255,255,255,.25)}
+.datos div:last-child{border-right:0}
+.datos .ic{font-size:19px}
+.datos .tx{font-size:12px;color:#dff5e3;margin-top:2px;line-height:1.3}
+.datos .tx b{color:#fff;display:block;font-size:13.5px}
+
+/* ---------- secciones ---------- */
+section{padding:28px 18px 6px}
+.kicker{color:var(--rojo);font-weight:800;font-size:13px;letter-spacing:2.5px;text-transform:uppercase}
+h2{font-size:34px;color:var(--verde-osc);margin:3px 0 6px;font-weight:700}
+h2 .r{color:var(--rojo)} h2 .d{color:var(--mostaza)}
+.lead{color:var(--gris);font-size:15.5px;margin-bottom:16px}
+
+/* favoritos */
+.favs{display:flex;flex-wrap:wrap;gap:12px}
+.fav{width:calc(50% - 6px);background:var(--papel);border-radius:14px;overflow:hidden;border:1px solid #eee0bd;box-shadow:0 3px 10px rgba(120,90,10,.10)}
+.fav img{width:100%;height:126px;object-fit:cover}
+.fav .ft{padding:10px 12px 12px;border-top:4px solid var(--dorado)}
+.fav:nth-child(2) .ft{border-top-color:var(--rojo)}
+.fav:nth-child(3) .ft{border-top-color:var(--verde)}
+.fav:nth-child(4) .ft{border-top-color:var(--dorado)}
+.fav h3{font-size:20px;color:var(--tinta)}
+.fav p{font-size:13px;color:var(--gris);line-height:1.4}
+.fav .precio{display:inline-block;margin-top:6px;background:var(--verde);color:#fff;font-weight:800;font-size:14px;border-radius:14px;padding:2px 11px}
+.fav .estrella{color:var(--mostaza);font-size:12px;font-weight:800;letter-spacing:.4px}
+
+/* menú estilo letrero dorado */
+.letrero{background:linear-gradient(160deg,#e9b81f 0%,var(--dorado) 45%,#c08f0a 100%);border-radius:16px;padding:20px 18px 16px;box-shadow:0 6px 22px rgba(150,105,0,.35);border:3px solid #a87a05}
+.letrero .mt{text-align:center;font-family:'Barlow Condensed';font-weight:700;font-size:32px;color:var(--verde-osc);text-transform:uppercase;letter-spacing:1px}
+.letrero .mt span{color:var(--rojo-osc)}
+.letrero .carnes{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:10px 0 6px}
+.letrero .carnes span{background:rgba(255,255,255,.85);color:var(--verde-osc);border-radius:16px;padding:3px 12px;font-weight:700;font-size:13.5px}
+.mi{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:2px dotted rgba(90,60,0,.35)}
+.mi:last-of-type{border-bottom:0}
+.mi .n{font-family:'Barlow Condensed';font-size:22px;font-weight:700;color:#7a1f1c;text-transform:uppercase;white-space:nowrap}
+.mi .d{flex:1;font-size:13px;color:#4a3a08;line-height:1.35;font-weight:600}
+.mi .pr{background:#fff;color:var(--verde-osc);font-weight:800;font-size:16.5px;border-radius:8px;padding:2px 10px;box-shadow:0 2px 4px rgba(90,60,0,.3);white-space:nowrap;transform:rotate(-2deg)}
+.mi .pr small{display:block;font-size:10.5px;color:var(--rojo-osc);font-weight:800;letter-spacing:.4px}
+.nota-menu{font-size:12.5px;color:#6b5510;margin-top:12px;font-style:italic;text-align:center;font-weight:600}
+.foto-letrero{margin-top:14px}
+.foto-letrero img{width:100%;height:230px;object-fit:cover;object-position:center 30%;border-radius:14px;border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.foto-letrero p{font-size:12.5px;color:var(--gris);text-align:center;margin-top:6px;font-style:italic}
+
+/* galería */
+.gal{display:flex;flex-wrap:wrap;gap:10px}
+.gal img{width:calc(50% - 5px);height:150px;object-fit:cover;border-radius:12px;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.15)}
+.gal img.ancha{width:100%;height:210px}
+
+/* reseñas */
+.res{background:var(--papel);border-left:5px solid var(--dorado);border-radius:10px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(120,90,10,.10)}
+.res .q{font-size:15.5px;color:#3c382a}
+.res .w{margin-top:7px;font-size:12.5px;color:var(--gris)}
+.res .w b{color:var(--mostaza)}
+.qrbox{display:flex;gap:16px;align-items:center;background:#fff;border:2px solid var(--verde);border-radius:14px;padding:16px;margin-top:16px;box-shadow:0 3px 10px rgba(23,112,51,.12)}
+.qrbox img{width:118px;height:118px}
+.qrbox h3{font-size:23px;color:var(--verde-osc)}
+.qrbox p{font-size:13.5px;color:#55534a;line-height:1.4}
+.qrbox a{display:inline-block;margin-top:8px;background:var(--rojo);color:#fff;font-weight:700;border-radius:20px;padding:8px 16px;font-size:14px}
+
+/* visítanos */
+.vis{background:var(--papel);border:2px solid var(--dorado);border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(120,90,10,.12)}
+.vis .dir{font-size:17px;font-weight:700;color:var(--tinta)}
+.horario{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+.horario td{padding:5px 0;border-bottom:1px solid #f0e3c2;color:#4c483a}
+.horario td:last-child{text-align:right;color:var(--verde-osc);font-weight:700}
+.horario tr:last-child td{border-bottom:0}
+.botones{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.botones a{flex:1;min-width:130px;text-align:center;border-radius:24px;padding:11px 8px;font-weight:700;font-size:15px;color:#fff}
+.botones .b1{background:var(--rojo)} .botones .b2{background:#1faa55}
+
+/* footer */
+footer{margin-top:30px;background:linear-gradient(90deg,var(--verde-osc),var(--verde) 55%,var(--verde-osc));padding:24px 18px 30px;text-align:center}
+footer img{width:118px;margin:0 auto 10px;border-radius:10px;border:2px solid var(--dorado-claro)}
+footer .fn{font-family:'Barlow Condensed';font-size:23px;color:#fff;text-transform:uppercase}
+footer p{font-size:13px;color:#dff5e3;margin-top:4px}
+footer a{color:var(--dorado-claro);font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- Barra superior -->
+<header class="topbar">
+  <img src="imgs/logo.jpg" alt="Taqueria La Leyenda">
+  <div>
+    <div class="nom">TAQUERIA <span>LA LEYENDA</span></div>
+    <div class="sub">FOOD TRUCK · TAMPA, FL</div>
+  </div>
+  <div class="sp"></div>
+  <div class="lang">
+    <button id="btn-es" class="on" onclick="setLang('es')">ES</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+  <a class="btn-call" href="tel:+18132156270">📞 <span data-es="Llamar" data-en="Call">Llamar</span></a>
+</header>
+
+<!-- Papel picado -->
+<svg class="papel" viewBox="0 0 640 30" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#2aa84c"/>
+  <path d="M80 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d92b26"/>
+  <path d="M160 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d9a514"/>
+  <path d="M240 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#2aa84c"/>
+  <path d="M320 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d92b26"/>
+  <path d="M400 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d9a514"/>
+  <path d="M480 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#2aa84c"/>
+  <path d="M560 0h80v19q-10 9-20 0q-10 9-20 0q-10 9-20 0q-10 9-20 0z" fill="#d92b26"/>
+</svg>
+
+<!-- Hero -->
+<div class="hero">
+  <img src="imgs/truck.jpg" alt="Food truck verde de Taqueria La Leyenda en Tampa">
+  <div class="velo"></div>
+  <div class="cont">
+    <span class="trucktag">🌮 <span data-es="Food truck mexicano tradicional" data-en="Traditional Mexican food truck">Food truck mexicano tradicional</span></span>
+    <h1><span data-es="Tacos de verdad," data-en="Real tacos,">Tacos de verdad,</span><br><span class="r" data-es="como en" data-en="just like">como en</span> <span class="d">México</span></h1>
+    <p data-es="Busca el truck verde en Gunn Hwy: tacos al pastor del trompo, asada, carnitas y más, hechos al momento cada noche." data-en="Look for the green truck on Gunn Hwy: pastor off the trompo, asada, carnitas and more, made fresh every night.">Busca el truck verde en Gunn Hwy: tacos al pastor del trompo, asada, carnitas y más, hechos al momento cada noche.</p>
+    <div class="badges">
+      <span class="bdg star">⭐ <b>4.9</b> · <span data-es="208 reseñas en Google" data-en="208 Google reviews">208 reseñas en Google</span></span>
+      <span class="bdg price">🌮 <span data-es="Tacos desde $2.50" data-en="Tacos from $2.50">Tacos desde $2.50</span></span>
+    </div>
+    <div class="ctas">
+      <a class="cta tel" href="tel:+18132156270">📞 <span data-es="Llamar" data-en="Call now">Llamar</span></a>
+      <a class="cta wa" href="https://wa.me/18132156270" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="cta map" href="https://www.google.com/maps/search/?api=1&amp;query=Taqueria+La+Leyenda&amp;query_place_id=ChIJU4J75rXBwogRShVu7FIZx1U" target="_blank" rel="noopener">📍 <span data-es="Cómo llegar" data-en="Directions">Cómo llegar</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- Franja de datos -->
+<div class="datos">
+  <div><div class="ic">🕕</div><div class="tx"><b data-es="Todos los días" data-en="Open daily">Todos los días</b>6:00 PM – 12:00 AM</div></div>
+  <div><div class="ic">🌮</div><div class="tx"><b data-es="Tacos" data-en="Tacos">Tacos</b><span data-es="desde $2.50" data-en="from $2.50">desde $2.50</span></div></div>
+  <div><div class="ic">🌳</div><div class="tx"><b data-es="Mesas" data-en="Seating">Mesas</b><span data-es="Al aire libre" data-en="Outdoor seating">Al aire libre</span></div></div>
+  <div><div class="ic">⭐</div><div class="tx"><b>4.9 / 5</b><span data-es="en Google" data-en="on Google">en Google</span></div></div>
+</div>
+
+<!-- Favoritos -->
+<section id="favoritos">
+  <div class="kicker" data-es="Los favoritos" data-en="Customer favorites">Los favoritos</div>
+  <h2><span data-es="Lo que pide" data-en="What">Lo que pide</span> <span class="r" data-es="todo Tampa" data-en="everyone orders">todo Tampa</span></h2>
+  <p class="lead" data-es="Los platillos que los clientes repiten una y otra vez, según sus propias reseñas." data-en="The dishes customers order again and again, according to their own reviews.">Los platillos que los clientes repiten una y otra vez, según sus propias reseñas.</p>
+  <div class="favs">
+    <div class="fav">
+      <img src="imgs/pastor.jpg" alt="Tacos al pastor">
+      <div class="ft"><div class="estrella">★ <span data-es="EL FAVORITO" data-en="TOP PICK">EL FAVORITO</span></div>
+      <h3 data-es="Tacos al pastor" data-en="Pastor tacos">Tacos al pastor</h3>
+      <p data-es="Del trompo, con piña, cebolla y cilantro. La especialidad de la casa." data-en="Off the trompo, with pineapple, onion and cilantro. The house specialty.">Del trompo, con piña, cebolla y cilantro. La especialidad de la casa.</p>
+      <span class="precio">$2.50</span></div>
+    </div>
+    <div class="fav">
+      <img src="imgs/tacos-salsas.jpg" alt="Tacos con salsas de la casa">
+      <div class="ft"><div class="estrella">★ <span data-es="CON LAS SALSAS DE LA CASA" data-en="WITH HOUSE SALSAS">CON LAS SALSAS DE LA CASA</span></div>
+      <h3 data-es="Tacos de carne asada" data-en="Carne asada tacos">Tacos de carne asada</h3>
+      <p data-es="Asada al momento, con las salsas roja y verde de la casa." data-en="Grilled to order, with the house red and green salsas.">Asada al momento, con las salsas roja y verde de la casa.</p>
+      <span class="precio">$3.00</span></div>
+    </div>
+    <div class="fav">
+      <img src="imgs/tacos-pollo.jpg" alt="Tacos de pollo y al pastor">
+      <div class="ft"><div class="estrella">★ <span data-es="DE LAS MÁS PEDIDAS" data-en="MOST ORDERED">DE LAS MÁS PEDIDAS</span></div>
+      <h3 data-es="Chalupa al pastor" data-en="Chalupa al pastor">Chalupa al pastor</h3>
+      <p data-es="Con queso, cebolla, cilantro y aguacate. De las más mencionadas en Google." data-en="With cheese, onion, cilantro and avocado. One of the most mentioned on Google.">Con queso, cebolla, cilantro y aguacate. De las más mencionadas en Google.</p>
+      <span class="precio">$4.00</span></div>
+    </div>
+    <div class="fav">
+      <img src="imgs/tacos-horchata.jpg" alt="Tacos con horchata">
+      <div class="ft"><div class="estrella">★ <span data-es="LA CONSENTIDA" data-en="CROWD FAVORITE">LA CONSENTIDA</span></div>
+      <h3 data-es="Horchata" data-en="Horchata">Horchata</h3>
+      <p data-es="Cremosa, con el toque justo de canela. Las reseñas la llaman de las mejores de Tampa." data-en="Creamy, with just the right touch of cinnamon. Reviews call it one of Tampa's best.">Cremosa, con el toque justo de canela. Las reseñas la llaman de las mejores de Tampa.</p>
+      <span class="precio" data-es="Aguas frescas" data-en="Fresh waters">Aguas frescas</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Menú -->
+<section id="menu">
+  <div class="kicker" data-es="El menú" data-en="The menu">El menú</div>
+  <h2><span data-es="Directo" data-en="Straight">Directo</span> <span class="d" data-es="del letrero" data-en="from the sign">del letrero</span></h2>
+  <p class="lead" data-es="Los mismos precios del letrero del truck. Sin sorpresas." data-en="The same prices as the truck's sign. No surprises.">Los mismos precios del letrero del truck. Sin sorpresas.</p>
+  <div class="letrero">
+    <div class="mt">Taqueria <span>La Leyenda</span> · Menú</div>
+    <div class="carnes">
+      <span>Al Pastor</span><span>Asada</span><span>Chorizo</span><span>Pollo</span><span>Carnitas</span><span>Campechana</span>
+    </div>
+    <div class="mi"><div class="n">Tacos</div><div class="d" data-es="Cilantro y cebolla. De asada: $3." data-en="Cilantro and onion. Asada: $3.">Cilantro y cebolla. De asada: $3.</div><div class="pr">$2.50</div></div>
+    <div class="mi"><div class="n">Gringas</div><div class="d" data-es="Pastor, piña y queso." data-en="Pastor, pineapple and cheese.">Pastor, piña y queso.</div><div class="pr">$8</div></div>
+    <div class="mi"><div class="n">Tortas</div><div class="d" data-es="Queso, cilantro, cebolla, tomate y aguacate. De asada: $13." data-en="Cheese, cilantro, onion, tomato and avocado. Asada: $13.">Queso, cilantro, cebolla, tomate y aguacate. De asada: $13.</div><div class="pr">$12</div></div>
+    <div class="mi"><div class="n">Quesadillas</div><div class="d" data-es="Queso, cilantro y cebolla. De asada: $6." data-en="Cheese, cilantro and onion. Asada: $6.">Queso, cilantro y cebolla. De asada: $6.</div><div class="pr">$5</div></div>
+    <div class="mi"><div class="n">Chalupas</div><div class="d" data-es="Queso, cilantro, cebolla y aguacate. De asada: $5." data-en="Cheese, cilantro, onion and avocado. Asada: $5.">Queso, cilantro, cebolla y aguacate. De asada: $5.</div><div class="pr">$4</div></div>
+    <div class="mi"><div class="n">Alambres</div><div class="d" data-es="Pastor, jamón, pimiento, cebolla, tomate, queso, aguacate y tortillas." data-en="Pastor, ham, peppers, onion, tomato, cheese, avocado and tortillas.">Pastor, jamón, pimiento, cebolla, tomate, queso, aguacate y tortillas.</div><div class="pr">$16</div></div>
+    <div class="mi"><div class="n">Burrito</div><div class="d" data-es="Pimiento, cebolla, cilantro, queso y aguacate. De asada: $13." data-en="Peppers, onion, cilantro, cheese and avocado. Asada: $13.">Pimiento, cebolla, cilantro, queso y aguacate. De asada: $13.</div><div class="pr">$12</div></div>
+    <div class="mi"><div class="n">Parrillada</div><div class="d" data-es="Asada, pastor, tocino, cebolla, pimiento, champiñones y tortillas. Para compartir." data-en="Asada, pastor, bacon, onion, peppers, mushrooms and tortillas. Made for sharing.">Asada, pastor, tocino, cebolla, pimiento, champiñones y tortillas. Para compartir.</div><div class="pr">$18</div></div>
+    <div class="mi"><div class="n" data-es="Bebidas" data-en="Drinks">Bebidas</div><div class="d" data-es="Aguas frescas y sodas mexicanas. Pregunta por las de hoy." data-en="Fresh waters and Mexican sodas. Ask for today's flavors.">Aguas frescas y sodas mexicanas. Pregunta por las de hoy.</div><div class="pr" data-es="Del día" data-en="Daily">Del día</div></div>
+    <p class="nota-menu" data-es="Precios tomados del letrero del truck (octubre 2026). Pueden cambiar sin aviso; confírmalos al ordenar." data-en="Prices from the truck's sign (October 2026). Subject to change; please confirm when ordering.">Precios tomados del letrero del truck (octubre 2026). Pueden cambiar sin aviso; confírmalos al ordenar.</p>
+  </div>
+  <div class="foto-letrero">
+    <img src="imgs/letrero-menu.jpg" alt="Letrero real del menú del food truck La Leyenda">
+    <p data-es="El letrero original del truck — el de verdad, sin retoques." data-en="The truck's original sign — the real one, no filters.">El letrero original del truck — el de verdad, sin retoques.</p>
+  </div>
+</section>
+
+<!-- Galería -->
+<section id="galeria">
+  <div class="kicker" data-es="Galería" data-en="Gallery">Galería</div>
+  <h2><span data-es="Así se ve" data-en="This is">Así se ve</span> <span class="r" data-es="la leyenda" data-en="the legend">la leyenda</span></h2>
+  <div class="gal">
+    <img class="ancha" src="imgs/pastor.jpg" alt="Órdenes de tacos al pastor recién hechas">
+    <img src="imgs/quesadilla.jpg" alt="Quesadilla y tacos">
+    <img src="imgs/burritos.jpg" alt="Burritos de la casa">
+    <img src="imgs/salsas.jpg" alt="Salsas y cebolla curtida en mesa al aire libre">
+    <img src="imgs/tacos-pollo.jpg" alt="Tacos de pollo y al pastor">
+  </div>
+</section>
+
+<!-- Papel picado -->
+<svg class="papel" viewBox="0 0 640 30" preserveAspectRatio="none" aria-hidden="true" style="margin-top:22px">
+  <path d="M0 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d9a514"/>
+  <path d="M80 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#2aa84c"/>
+  <path d="M160 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d92b26"/>
+  <path d="M240 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d9a514"/>
+  <path d="M320 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#2aa84c"/>
+  <path d="M400 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d92b26"/>
+  <path d="M480 0h78v19q-9 9-19 0q-10 9-20 0q-10 9-20 0q-9 9-19 0z" fill="#d9a514"/>
+  <path d="M560 0h80v19q-10 9-20 0q-10 9-20 0q-10 9-20 0q-10 9-20 0z" fill="#2aa84c"/>
+</svg>
+
+<!-- Reseñas -->
+<section id="resenas">
+  <div class="kicker" data-es="Reseñas reales" data-en="Real reviews">Reseñas reales</div>
+  <h2>4.9 ★ <span class="r" data-es="de puro sabor" data-en="of pure flavor">de puro sabor</span></h2>
+  <p class="lead" data-es="208 reseñas en Google con 4.9 de calificación. Esto dicen los clientes:" data-en="208 Google reviews with a 4.9 rating. Here's what customers say:">208 reseñas en Google con 4.9 de calificación. Esto dicen los clientes:</p>
+  <div class="res">
+    <div class="q" data-es="“Los mejores tacos mexicanos y la mejor horchata: cada bocado sabía auténtico, como de un puesto callejero en México.”" data-en="“The best Mexican tacos and horchata — every bite tasted authentic, like something you'd find straight from a street vendor in Mexico.”">“Los mejores tacos mexicanos y la mejor horchata: cada bocado sabía auténtico, como de un puesto callejero en México.”</div>
+    <div class="w">★★★★★ · <span data-es="Reseña de Google" data-en="Google review">Reseña de Google</span></div>
+  </div>
+  <div class="res">
+    <div class="q" data-es="“¡El mejor lugar de tacos de la zona! Me encantan sus quesadillas y tacos, y la horchata es el complemento perfecto.”" data-en="“This is the best taco place around! I especially love their quesadillas and tacos, and the horchata is the perfect complement.”">“¡El mejor lugar de tacos de la zona! Me encantan sus quesadillas y tacos, y la horchata es el complemento perfecto.”</div>
+    <div class="w">★★★★★ · <span data-es="Reseña de Google" data-en="Google review">Reseña de Google</span></div>
+  </div>
+  <div class="res">
+    <div class="q" data-es="“¡Encontré mi lugar! Terminé comiendo 8 tacos: la quesadilla buenísima y la horchata no falló. ¡Seré cliente regular!”" data-en="“I found my spot! I ended up eating 8 tacos — the quesadilla was great and the horchata didn't miss. I'll be a regular!”">“¡Encontré mi lugar! Terminé comiendo 8 tacos: la quesadilla buenísima y la horchata no falló. ¡Seré cliente regular!”</div>
+    <div class="w">★★★★★ · Davie · <span data-es="Reseña de Google" data-en="Google review">Reseña de Google</span></div>
+  </div>
+  <div class="qrbox">
+    <img src="qr/qr-resena.png" alt="QR para dejar una reseña en Google">
+    <div>
+      <h3 data-es="¿Ya probaste?" data-en="Already tried us?">¿Ya probaste?</h3>
+      <p data-es="Escanea el código o toca el botón y déjanos tu reseña en Google. Nos ayuda muchísimo." data-en="Scan the code or tap the button to leave us a Google review. It helps us a lot.">Escanea el código o toca el botón y déjanos tu reseña en Google. Nos ayuda muchísimo.</p>
+      <a href="https://search.google.com/local/writereview?placeid=ChIJU4J75rXBwogRShVu7FIZx1U" target="_blank" rel="noopener">⭐ <span data-es="Dejar una reseña" data-en="Write a review">Dejar una reseña</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Visítanos -->
+<section id="visitanos">
+  <div class="kicker" data-es="Encuentra el truck" data-en="Find the truck">Encuentra el truck</div>
+  <h2><span data-es="Te esperamos" data-en="See you">Te esperamos</span> <span class="d" data-es="esta noche" data-en="tonight">esta noche</span></h2>
+  <div class="vis">
+    <div class="dir">📍 4441 Gunn Hwy, Tampa, FL 33618</div>
+    <p style="color:var(--gris);font-size:14px" data-es="El truck verde de Carrollwood · Mesas al aire libre · Sin reservaciones" data-en="The green truck in Carrollwood · Outdoor seating · No reservations">El truck verde de Carrollwood · Mesas al aire libre · Sin reservaciones</p>
+    <table class="horario">
+      <tr><td data-es="Lunes" data-en="Monday">Lunes</td><td>6:00 PM – 12:00 AM</td></tr>
+      <tr><td data-es="Martes" data-en="Tuesday">Martes</td><td>6:00 PM – 12:00 AM</td></tr>
+      <tr><td data-es="Miércoles" data-en="Wednesday">Miércoles</td><td>6:00 PM – 12:00 AM</td></tr>
+      <tr><td data-es="Jueves" data-en="Thursday">Jueves</td><td>6:00 PM – 12:00 AM</td></tr>
+      <tr><td data-es="Viernes" data-en="Friday">Viernes</td><td>6:00 PM – 12:00 AM</td></tr>
+      <tr><td data-es="Sábado" data-en="Saturday">Sábado</td><td>6:00 PM – 12:00 AM</td></tr>
+      <tr><td data-es="Domingo" data-en="Sunday">Domingo</td><td>6:00 PM – 12:00 AM</td></tr>
+    </table>
+    <div class="qrbox" style="margin-top:6px">
+      <img src="qr/qr-ubicacion.png" alt="QR de ubicación en Google Maps">
+      <div>
+        <h3 data-es="Cómo llegar" data-en="Get directions">Cómo llegar</h3>
+        <p data-es="Escanea el código para abrir nuestra ubicación oficial en Google Maps." data-en="Scan the code to open our official location on Google Maps.">Escanea el código para abrir nuestra ubicación oficial en Google Maps.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Taqueria+La+Leyenda&amp;query_place_id=ChIJU4J75rXBwogRShVu7FIZx1U" target="_blank" rel="noopener">📍 <span data-es="Abrir en Maps" data-en="Open in Maps">Abrir en Maps</span></a>
+      </div>
+    </div>
+    <div class="botones">
+      <a class="b1" href="tel:+18132156270">📞 (813) 215-6270</a>
+      <a class="b2" href="https://wa.me/18132156270" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="imgs/logo.jpg" alt="Logo Taqueria La Leyenda">
+  <div class="fn">Taqueria La Leyenda</div>
+  <p>4441 Gunn Hwy, Tampa, FL 33618 · (813) 215-6270</p>
+  <p><a href="https://www.facebook.com/399931643209120" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Taqueria+La+Leyenda&amp;query_place_id=ChIJU4J75rXBwogRShVu7FIZx1U" target="_blank" rel="noopener">Google Maps</a></p>
+  <p data-es="Abierto todos los días · 6:00 PM – 12:00 AM" data-en="Open daily · 6:00 PM – 12:00 AM">Abierto todos los días · 6:00 PM – 12:00 AM</p>
+</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var v = el.getAttribute('data-'+l);
+    if(v !== null) el.innerHTML = v;
+  });
+  document.getElementById('btn-es').classList.toggle('on', l==='es');
+  document.getElementById('btn-en').classList.toggle('on', l==='en');
+  document.documentElement.lang = l;
+  try{ localStorage.setItem('ll-lang', l); }catch(e){}
+}
+(function(){
+  var l = 'es';
+  try{ l = localStorage.getItem('ll-lang') || 'es'; }catch(e){}
+  if(l === 'en') setLang('en');
+})();
+</script>
+</body>
+</html>
